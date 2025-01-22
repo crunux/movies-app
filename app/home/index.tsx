@@ -1,9 +1,9 @@
 import { View, Text, ActivityIndicator } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import MainSlideShow from "@/components/movies/MainSlideShow";
+import MainSlideShow from "@/presentation/components/movies/MainSlideShow";
 import { useMovies } from "@/presentation/hooks/useMovies";
-import MoviesHorizontalList from "@/components/movies/MoviesHorizontalList";
+import MoviesHorizontalList from "@/presentation/components/movies/MoviesHorizontalList";
 import { ScrollView } from "react-native";
 
 const HomeScreen = () => {
@@ -40,9 +40,10 @@ const HomeScreen = () => {
         />
 
         <MoviesHorizontalList
-          movies={topRatedMoviesgQuery.data ?? []}
+          movies={topRatedMoviesgQuery.data?.pages.flat() ?? []}
           title="Top Rated"
           className="mb-5"
+          loadNextPage={topRatedMoviesgQuery.fetchNextPage}
         />
 
         <MoviesHorizontalList
