@@ -5,6 +5,7 @@ import { getMovieByIdAction } from '@/core/actions/movie/get-movie-by-id.action'
 import { useMovie } from '@/presentation/hooks/useMovie'
 import { ScrollView } from 'react-native'
 import MovieHeader from '@/presentation/components/movies/MovieHeader'
+import MovieDescripcion from '@/presentation/components/movies/MovieDescripcion'
 
 const MovieScreen = () => {
   const { id } = useLocalSearchParams()
@@ -23,6 +24,7 @@ const MovieScreen = () => {
   return (
     <ScrollView>
       <MovieHeader originalTitle={movieQuery.data.originalTitle} poster={movieQuery.data.poster} title={movieQuery.data.title}/>
+      <MovieDescripcion movie={movieQuery.data}/>
     </ScrollView>
   )
 }
