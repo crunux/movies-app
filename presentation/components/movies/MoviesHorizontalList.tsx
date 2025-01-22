@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { Movie } from "@/infrastructure/interfaces/movie.interface";
 import MoviePoster from "./MoviePoster";
 
+
 interface MoviesHorizontalListProps {
   movies: Movie[];
   title?: string;
@@ -20,8 +21,8 @@ const MoviesHorizontalList = ({
   const isLoading = useRef(false)
 
   useEffect(() => {
-    setTimeout(() => {
-      isLoading.current = false;
+    setTimeout(()=> {
+    isLoading.current = false;
     }, 200)
   }, [movies])
 
@@ -42,7 +43,6 @@ const MoviesHorizontalList = ({
 
     isLoading.current = false
   }
-
   return (
     <View className={`${className}`}>
       {title && (
@@ -51,7 +51,7 @@ const MoviesHorizontalList = ({
 
       <FlatList
         data={movies}
-        keyExtractor={(item) => `${item.id}`}
+        keyExtractor={(item, i) => `${item.id}-${i}`}
         renderItem={({ item }) => (
           <MoviePoster id={item.id} poster={item.poster} smallPoster />
         )}
@@ -64,4 +64,3 @@ const MoviesHorizontalList = ({
 };
 
 export default MoviesHorizontalList;
-

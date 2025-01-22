@@ -28,12 +28,10 @@ export const useMovies = () => {
     queryKey: ["movies", "top-rated"],
     queryFn: ({pageParam}) => {
       console.log({pageParam});
-      
-      return topRatedMoviesAction({ page: pageParam });
+      return topRatedMoviesAction({ page: pageParam})
     },
     staleTime: 1000 * 60 * 60 * 24, // 24 horas
     getNextPageParam: (lastPage, pages) => pages.length + 1,
-
   });
 
   return {

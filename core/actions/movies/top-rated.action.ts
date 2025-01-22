@@ -8,11 +8,13 @@ interface Options{
   limit?: number;
 }
 
-export const topRatedMoviesAction = async ({ page = 1, limit = 10 }: Options): Promise<Movie[]> => {
+
+export const topRatedMoviesAction = async ({ page = 1, limit = 10}: Options): Promise<Movie[]> => {
+
   try {
 
-    const { data } = await movieApi.get<MovieDBResponse>("/top_rated", {
-      params: {
+    const { data } = await movieApi.get<MovieDBResponse>("/top_rated",{
+      params:{
         page
       }
     })
@@ -21,6 +23,7 @@ export const topRatedMoviesAction = async ({ page = 1, limit = 10 }: Options): P
     // console.log(JSON.stringify(movies, null, 2));
 
     return movies
+
   } catch (error) {
     console.log(error);
     throw 'Cannot load now playing movies';
