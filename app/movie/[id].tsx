@@ -28,7 +28,7 @@ const MovieScreen = () => {
     <ScrollView>
       <MovieHeader originalTitle={movieQuery.data.originalTitle} poster={movieQuery.data.poster} title={movieQuery.data.title}/>
       <MovieDescripcion movie={movieQuery.data}/>
-      <MovieCast cast={movieCastQuery.data} title="Casting"/>
+      <MovieCast cast={movieCastQuery.data} title="Actors"/>
     </ScrollView>
   )
 }

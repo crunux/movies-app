@@ -19,7 +19,7 @@ const ActorCard = ({actor}: ActorCardProps) => {
         <Text
           numberOfLines={2}
           adjustsFontSizeToFit
-          className="font-bold text-lg"
+          className="font-bold text-md"
         >
           {actor.name}
         </Text>

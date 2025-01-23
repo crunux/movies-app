@@ -9,7 +9,7 @@ export const getMovieCastAction = async (id: number | string): Promise<Cast[]> =
   try {
 
     const { data } = await movieApi.get<CreditsResponse>(`/${id}/credits`)
-    console.log(JSON.stringify(data, null, 2));
+    // console.log(JSON.stringify(data, null, 2));
     
     return data.cast.map(CastMapper.fromTheMovieDBToCastMovie)
   } catch (error) {

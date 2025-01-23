@@ -10,13 +10,10 @@ interface MovieCastProps {
 
 const MovieCast = ({title, cast}: MovieCastProps) => {
 
-  const onScroll = () =>{
-    console.log(cast);
-  }
   return (
-    <View className="pb-10 my-2">
+    <View className="pb-10 my-3">
       {title && (
-        <Text className="text-2xl font-bold px-4 mb-1">{title}</Text>
+        <Text className="text-xl font-bold px-5 mb-2">{title}</Text>
       )}
 
       <FlatList
@@ -27,7 +24,6 @@ const MovieCast = ({title, cast}: MovieCastProps) => {
         )}
         horizontal
         showsHorizontalScrollIndicator={false}
-        onScroll={onScroll}
       />
     </View>
   )
