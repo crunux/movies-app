@@ -6,13 +6,16 @@ import { useMovie } from '@/presentation/hooks/useMovie'
 import { ScrollView } from 'react-native'
 import MovieHeader from '@/presentation/components/movies/MovieHeader'
 import MovieDescripcion from '@/presentation/components/movies/MovieDescripcion'
+import { getMovieCastAction } from '@/core/actions/movie/get-movie-casting.action'
+import MovieCast from '@/presentation/components/movies/MovieCast'
 
 const MovieScreen = () => {
   const { id } = useLocalSearchParams()
 
-  const { movieQuery } = useMovie(+id)
+  const { movieQuery, movieCastQuery} = useMovie(+id)
 
-  if(movieQuery.isLoading || !movieQuery.data){
+
+  if(movieQuery.isLoading || !movieQuery.data || !movieCastQuery?.data){
     return (
       <View className='justify-center items-center flex-1'>
         <Text className='mb-4'>Espere por favor</Text>
@@ -25,6 +28,7 @@ const MovieScreen = () => {
     <ScrollView>
       <MovieHeader originalTitle={movieQuery.data.originalTitle} poster={movieQuery.data.poster} title={movieQuery.data.title}/>
       <MovieDescripcion movie={movieQuery.data}/>
+      <MovieCast cast={movieCastQuery.data} title="Casting"/>
     </ScrollView>
   )
 }

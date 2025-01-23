@@ -37,11 +37,7 @@ const MoviesHorizontalList = ({
 
     isLoading.current = true
     //TODO: Cargar siguientes peliculas
-    console.log("Cargar siguientes peliculas");
-
     loadNextPage && loadNextPage()
-
-    isLoading.current = false
   }
   return (
     <View className={`${className}`}>

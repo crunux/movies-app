@@ -29,14 +29,15 @@ const HomeScreen = () => {
         className="pb-10"
         style={{ paddingTop: safeArea.top }}
       >
-        <Text className="text-3xl font-bold px-4 mb-2">Movie App</Text>
+        <Text className="text-4xl text-center font-bold px-4 mb-1">Movie Reviewer</Text>
 
         <MainSlideShow movies={nowPlayingQuery.data ?? []} />
 
         <MoviesHorizontalList
-          movies={popularMoviesgQuery.data ?? []}
+          movies={popularMoviesgQuery.data?.pages.flat() ?? []}
           title="Populate"
           className="mb-5"
+          loadNextPage={popularMoviesgQuery.fetchNextPage}
         />
 
         <MoviesHorizontalList
@@ -47,9 +48,11 @@ const HomeScreen = () => {
         />
 
         <MoviesHorizontalList
-          movies={upcomingMoviesgQuery.data ?? []}
+          movies={upcomingMoviesgQuery.data?.pages.flat() ?? []}
           title="Up Coming"
           className="mb-5 "
+          loadNextPage={upcomingMoviesgQuery.fetchNextPage}
+
         />
       </View>
     </ScrollView>
