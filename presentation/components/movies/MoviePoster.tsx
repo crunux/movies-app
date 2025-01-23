@@ -21,8 +21,8 @@ const MoviePoster = ({
         source={{ uri: poster }}
         className="shadow-lg rounded-2xl w-full h-full"
         style={{
-          width: smallPoster ? 85 : 150,
-          height: smallPoster ? 130 : 200,
+          width: smallPoster ? 85 : 170,
+          height: smallPoster ? 130 : 215,
         }}
         resizeMode="cover"
       />

@@ -24,7 +24,7 @@ const MainSlideShow = ({ movies }: MainSlideShowProps) => {
         height={350}
         style={{
           width,
-          height: 350,
+          height: 375,
           justifyContent: "center",
           alignItems: "center",
         }}

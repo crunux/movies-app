@@ -3,12 +3,20 @@ import { Movie } from "@/infrastructure/interfaces/movie.interface";
 import { MovieDBResponse } from "@/infrastructure/interfaces/moviedb-response";
 import { MovieMapper } from "@/infrastructure/mappers/movie.mapper";
 
+interface Options{
+  page?: number;
+  limit?: number;
+}
 
-export const upcomingMoviesAction = async (): Promise<Movie[]> => {
+export const upcomingMoviesAction = async ({page = 1, limit = 10}: Options): Promise<Movie[]> => {
 
   try {
 
-    const { data } = await movieApi.get<MovieDBResponse>("/upcoming")
+    const { data } = await movieApi.get<MovieDBResponse>("/upcoming", {
+      params: {
+        page
+      }
+    })
     
     const movies = data.results.map(MovieMapper.mapMovie)
     // console.log(JSON.stringify(movies, null, 2));

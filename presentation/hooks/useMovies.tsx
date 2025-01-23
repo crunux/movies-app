@@ -11,23 +11,30 @@ export const useMovies = () => {
     staleTime: 1000 * 60 * 60 * 24, // 24 horas
   });
 
-  const popularMoviesgQuery = useQuery({
+  const popularMoviesgQuery = useInfiniteQuery({
+    initialPageParam: 1,
     queryKey: ["movies", "popular"],
-    queryFn: popularMoviesAction,
+    queryFn: ({pageParam}) => {
+      return popularMoviesAction({ page: pageParam})
+    },
     staleTime: 1000 * 60 * 60 * 24, // 24 horas
+    getNextPageParam: (lastPage, pages) => pages.length + 1,
   });
 
-  const upcomingMoviesgQuery = useQuery({
+  const upcomingMoviesgQuery = useInfiniteQuery({
+    initialPageParam: 1,
     queryKey: ["movies", "upcoming"],
-    queryFn: upcomingMoviesAction,
+    queryFn: ({pageParam}) => {
+      return upcomingMoviesAction({ page: pageParam})
+    },
     staleTime: 1000 * 60 * 60 * 24, // 24 horas
+    getNextPageParam: (lastPage, pages) => pages.length + 1,
   });
 
   const topRatedMoviesgQuery = useInfiniteQuery({
     initialPageParam: 1,
     queryKey: ["movies", "top-rated"],
     queryFn: ({pageParam}) => {
-      console.log({pageParam});
       return topRatedMoviesAction({ page: pageParam})
     },
     staleTime: 1000 * 60 * 60 * 24, // 24 horas

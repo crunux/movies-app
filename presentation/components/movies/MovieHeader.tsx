@@ -33,7 +33,7 @@ const MovieHeader = ({poster, originalTitle, title}: MovieHeaderProps) => {
         top: 35,
         left: 10,
       }}>
-        <Pressable onPress={() => router.dismiss()}>
+        <Pressable  onPress={() => router.dismiss()}>
           <Ionicons name='arrow-back' size={30} color='white' className='shadow'/>
         </Pressable>
       </View>
